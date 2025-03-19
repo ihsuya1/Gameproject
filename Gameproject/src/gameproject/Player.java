@@ -2,10 +2,18 @@ package gameproject;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Represents a player in the game, managing their cards and score.
+ * 
+ * Encapsulation: Private fields ensure controlled access.
+ * Cohesion: Focused on player-specific functionality.
+ * Coupling: Low, interacts only with Card.
+ * Composition: Player owns QueueCard directly.
+ */
 public class Player {
-    private String name;
-    private Queue<Card> cards;
-    private int score;
+    private String name;      // Encapsulation: Name is private
+    private Queue<Card> cards;  // Composition: Cards belong only to this player
+    private int score;        // Encapsulation: Score is private
 
     public Player(String name) {
         this.name = name;
@@ -13,27 +21,27 @@ public class Player {
         this.score = 0;
     }
 
-    public String getName() {
+    public String getName() {  
         return name;
     }
 
-    public void addCard(Card card) {
+    public void addCard(Card card) {  // Encapsulation: Cards managed internally
         cards.add(card);
     }
 
-    public Card playCard() {
-        return cards.poll();
+    public Card playCard() {  // Cohesion: Only manages player’s cards
+        return cards.poll();  // FIFO ensures fair play order
     }
 
-    public boolean hasCards() {
+    public boolean hasCards() {  
         return !cards.isEmpty();
     }
 
-    public void incrementScore() {
+    public void incrementScore() {  // Encapsulation: Score updated internally
         score++;
     }
 
-    public int getScore() {
+    public int getScore() {  
         return score;
     }
 }
