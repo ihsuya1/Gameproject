@@ -8,7 +8,7 @@ import java.util.Queue;
  * Encapsulation: Private fields ensure controlled access.
  * Cohesion: Focused on player-specific functionality.
  * Coupling: Low, interacts only with Card.
- * Composition: Player owns QueueCard directly.
+ * Composition: `Player` owns `QueueCard` directly.
  */
 public class Player {
     private String name;      // Encapsulation: Name is private

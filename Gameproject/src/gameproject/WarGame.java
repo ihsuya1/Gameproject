@@ -4,9 +4,9 @@ package gameproject;
  * Manages the War card game, including rounds and scoring.
  * 
  * Encapsulation: Private fields limit access to game internals.
- * Cohesion: This class manages game flow and logic.
- * Coupling: Loosely coupled, only interacts with Player and Deck.
- * Aggregation: WarGame contains Player and Deck, but they exist independently.
+ * Cohesion: Manages only game flow and logic.
+ * Coupling: Loosely coupled, interacts with Player and Deck via methods.
+ * Aggregation: WarGame contains Player and Deck but does not own them.
  * Flexibility/Maintainability: Easy to adjust rounds, rules, or scoring.
  */
 public class WarGame {
@@ -39,11 +39,11 @@ public class WarGame {
             System.out.println(player1.getName() + " plays: " + card1);
             System.out.println(player2.getName() + " plays: " + card2);
 
-            // Determines round winner and updates score
-            if (card1.getValue() > card2.getValue()) {
+            // Compare numeric values of cards
+            if (card1.getNumericValue() > card2.getNumericValue()) {
                 player1.incrementScore();
                 System.out.println(player1.getName() + " wins this round!\n");
-            } else if (card1.getValue() < card2.getValue()) {
+            } else if (card1.getNumericValue() < card2.getNumericValue()) {
                 player2.incrementScore();
                 System.out.println(player2.getName() + " wins this round!\n");
             } else {
