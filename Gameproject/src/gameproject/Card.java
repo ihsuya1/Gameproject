@@ -1,20 +1,22 @@
 package gameproject;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Represents a single playing card with a suit and rank.
- * 
- * Encapsulation: Keeps suit and rank private.
- * Cohesion: Only responsible for storing card data.
+ *
+ * Design Principles:
+ * - Encapsulation: Fields suit and rank are private.
+ * - Cohesion: This class handles only card-related logic.
+ * - Low Coupling: Interacts with other classes only via public methods.
  */
 public class Card {
-    private String suit;  // Encapsulation: Keeps suit private
-    private String rank;  // Encapsulation: Keeps rank private
+    private String suit;
+    private String rank;
     private static final Map<String, Integer> rankValues = new HashMap<>();
 
-    // Static block to assign numeric values to ranks
+    // Static initialization block to assign rank values
     static {
         rankValues.put("2", 2);
         rankValues.put("3", 3);
@@ -28,7 +30,7 @@ public class Card {
         rankValues.put("J", 11);
         rankValues.put("Q", 12);
         rankValues.put("K", 13);
-        rankValues.put("A", 14);  // Ace is highest
+        rankValues.put("A", 14); // Ace is highest
     }
 
     public Card(String suit, String rank) {
@@ -36,9 +38,16 @@ public class Card {
         this.rank = rank;
     }
 
-    // Get numeric value for comparison
     public int getNumericValue() {
         return rankValues.get(rank);
+    }
+
+    public String getSuit() {
+        return suit;
+    }
+
+    public String getRank() {
+        return rank;
     }
 
     @Override

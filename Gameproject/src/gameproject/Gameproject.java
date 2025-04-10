@@ -1,9 +1,11 @@
 package gameproject;
 
 /**
- * Main class to run the War Game.
- * 
- * Flexibility/Maintainability: Changing game settings is easy.
+ * Main driver class to run the War game.
+ *
+ * Design Principles:
+ * - Flexibility: Main class simply calls WarGame. Easy to expand.
+ * - Low Coupling: Depends only on WarGame's public interface.
  */
 public class Gameproject {
     public static void main(String[] args) {

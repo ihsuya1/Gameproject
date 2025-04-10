@@ -1,19 +1,20 @@
 package gameproject;
+
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * Represents a player in the game, managing their cards and score.
- * 
- * Encapsulation: Private fields ensure controlled access.
- * Cohesion: Focused on player-specific functionality.
- * Coupling: Low, interacts only with Card.
- * Composition: `Player` owns `QueueCard` directly.
+ * Represents a player in the War game.
+ *
+ * Design Principles:
+ * - Encapsulation: Fields are private, exposed via getters/setters.
+ * - Cohesion: Player only manages their own data and card queue.
+ * - Composition: Player "has-a" collection of Cards.
  */
 public class Player {
-    private String name;      // Encapsulation: Name is private
-    private Queue<Card> cards;  // Composition: Cards belong only to this player
-    private int score;        // Encapsulation: Score is private
+    private String name;
+    private Queue<Card> cards;
+    private int score;
 
     public Player(String name) {
         this.name = name;
@@ -21,27 +22,27 @@ public class Player {
         this.score = 0;
     }
 
-    public String getName() {  
-        return name;
-    }
-
-    public void addCard(Card card) {  // Encapsulation: Cards managed internally
+    public void addCard(Card card) {
         cards.add(card);
     }
 
-    public Card playCard() {  // Cohesion: Only manages player’s cards
-        return cards.poll();  // FIFO ensures fair play order
+    public Card playCard() {
+        return cards.poll();
     }
 
-    public boolean hasCards() {  
+    public boolean hasCards() {
         return !cards.isEmpty();
     }
 
-    public void incrementScore() {  // Encapsulation: Score updated internally
+    public void incrementScore() {
         score++;
     }
 
-    public int getScore() {  
+    public int getScore() {
         return score;
+    }
+
+    public String getName() {
+        return name;
     }
 }
